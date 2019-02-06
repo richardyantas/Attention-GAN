@@ -1,0 +1,1012 @@
+Transform: 256
+Dataset test: n_words=5450 emb_num=10
+CUDA status: False
+GPU ID: -1
+Init condGAN ... 
+Load text encoder from: ../DAMSMencoders/birds/text_encoder200.pth
+G_net: G_FC_Net(
+  (ca_net): CA_Net(
+    (fc): Linear(in_features=256, out_features=400, bias=True)
+    (relu): GLU()
+  )
+  (h_net1): INIT_STAGE_G(
+    (fc): Sequential(
+      (0): Linear(in_features=200, out_features=16384, bias=False)
+      (1): BatchNorm1d(16384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GLU()
+    )
+    (upsample1): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample2): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample3): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample4): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net1): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net2): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net2): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net3): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net3): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+)
+D_net[0]: D_Net_64(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[1]: D_Net_128(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32_1): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[2]: D_Net_256(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64): Sequential(
+    (0): Conv2d(1024, 2048, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_1): Sequential(
+    (0): Conv2d(2048, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_2): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+Number of nets G/D: 3
+Load G from: ../models/birds/attn2o_netG_epoch_600.pth
+Load D0 from: ../models/birds/netD0_epoch_600.pth
+Load D1 from: ../models/birds/netD1_epoch_600.pth
+Load D2 from: ../models/birds/netD2_epoch_600.pth
+Total time for evaluation: 1589.833720445633
+Load text encoder from: ../DAMSMencoders/birds/text_encoder200.pth
+G_net: G_FC_Net(
+  (ca_net): CA_Net(
+    (fc): Linear(in_features=256, out_features=400, bias=True)
+    (relu): GLU()
+  )
+  (h_net1): INIT_STAGE_G(
+    (fc): Sequential(
+      (0): Linear(in_features=200, out_features=16384, bias=False)
+      (1): BatchNorm1d(16384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GLU()
+    )
+    (upsample1): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample2): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample3): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample4): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net1): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net2): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net2): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net3): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net3): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+)
+D_net[0]: D_Net_64(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[1]: D_Net_128(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32_1): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[2]: D_Net_256(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64): Sequential(
+    (0): Conv2d(1024, 2048, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_1): Sequential(
+    (0): Conv2d(2048, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_2): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+Number of nets G/D: 3
+Load G from: ../models/birds/attn2o_netG_epoch_600.pth
+Load D0 from: ../models/birds/netD0_epoch_600.pth
+Load D1 from: ../models/birds/netD1_epoch_600.pth
+Load D2 from: ../models/birds/netD2_epoch_600.pth
+Load text encoder from: ../DAMSMencoders/birds/text_encoder200.pth
+G_net: G_FC_Net(
+  (ca_net): CA_Net(
+    (fc): Linear(in_features=256, out_features=400, bias=True)
+    (relu): GLU()
+  )
+  (h_net1): INIT_STAGE_G(
+    (fc): Sequential(
+      (0): Linear(in_features=200, out_features=16384, bias=False)
+      (1): BatchNorm1d(16384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GLU()
+    )
+    (upsample1): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample2): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample3): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample4): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net1): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net2): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net2): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net3): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net3): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+)
+D_net[0]: D_Net_64(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[1]: D_Net_128(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32_1): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[2]: D_Net_256(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64): Sequential(
+    (0): Conv2d(1024, 2048, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_1): Sequential(
+    (0): Conv2d(2048, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_2): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+Number of nets G/D: 3
+Load G from: ../models/birds/attn2o_netG_epoch_600.pth
+Load D0 from: ../models/birds/netD0_epoch_600.pth
+Load D1 from: ../models/birds/netD1_epoch_600.pth
+Load D2 from: ../models/birds/netD2_epoch_600.pth
+Total time for evaluation: 1687.5777750015259
+Load text encoder from: ../DAMSMencoders/birds/text_encoder200.pth
+G_net: G_FC_Net(
+  (ca_net): CA_Net(
+    (fc): Linear(in_features=256, out_features=400, bias=True)
+    (relu): GLU()
+  )
+  (h_net1): INIT_STAGE_G(
+    (fc): Sequential(
+      (0): Linear(in_features=200, out_features=16384, bias=False)
+      (1): BatchNorm1d(16384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): GLU()
+    )
+    (upsample1): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample2): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample3): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+    (upsample4): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net1): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net2): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net2): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+  (h_net3): NEXT_STAGE_G(
+    (att): GlobalAttentionGeneral(
+      (conv_context): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (sm): Softmax()
+    )
+    (residual): Sequential(
+      (0): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): ResBlock(
+        (block): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): GLU()
+          (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+    (upsample): Sequential(
+      (0): Upsample(scale_factor=2, mode=nearest)
+      (1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): GLU()
+    )
+  )
+  (img_net3): GET_IMAGE_G(
+    (img): Sequential(
+      (0): Conv2d(32, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): Tanh()
+    )
+  )
+)
+D_net[0]: D_Net_64(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[1]: D_Net_128(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32_1): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+D_net[2]: D_Net_256(
+  (img_code_s16): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s32): Sequential(
+    (0): Conv2d(512, 1024, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64): Sequential(
+    (0): Conv2d(1024, 2048, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_1): Sequential(
+    (0): Conv2d(2048, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (img_code_s64_2): Sequential(
+    (0): Conv2d(1024, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+  )
+  (UNCOND_DNET): D_GET_LOGITS(
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+  (COND_DNET): D_GET_LOGITS(
+    (jointConv): Sequential(
+      (0): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.2, inplace)
+    )
+    (outlogits): Sequential(
+      (0): Conv2d(512, 1, kernel_size=(4, 4), stride=(4, 4))
+      (1): Sigmoid()
+    )
+  )
+)
+Number of nets G/D: 3
+Load G from: ../models/birds/attn2o_netG_epoch_600.pth
+Load D0 from: ../models/birds/netD0_epoch_600.pth
+Load D1 from: ../models/birds/netD1_epoch_600.pth
+Load D2 from: ../models/birds/netD2_epoch_600.pth
+Total time for evaluation: 2039.7085709571838

@@ -1,0 +1,5 @@
+Transform: 256
+Dataset test: n_words=5450 emb_num=10
+CUDA status: False
+GPU ID: -1
+Init condGAN ... 
