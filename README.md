@@ -15,7 +15,7 @@ This paper
         
 ### DATA
 
-* Data <a href="http://www.vision.caltech.edu/visipedia/CUB-200-2011.html">birds</a> - извлечь в папку data/birds/
+* Data <a href="http://www.vision.caltech.edu/visipedia/CUB-200-2011.html">birds</a> - data/birds/
 
 
 
